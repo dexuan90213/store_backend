@@ -30,7 +30,7 @@
   <div class="field">
     <%= form.label :state, '商品狀態', class: 'label' %>
     <div class="control">
-      <%= form.text_field :state, placeholder: '請輸入商品狀態', class: 'input' %>
+      <%= form.select :state, [['上架', 'on_sale'], ['下架', 'discontinued'], ['進貨中', 'restock']] %>
     </div>
   </div>
 
