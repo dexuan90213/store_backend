@@ -15,5 +15,8 @@ module StoreBackend
       g.helper false
       g.assets false
     end
+
+    config.i18n.default_locale = 'zh-TW'
+    config.time_zone = 'Taipei'
   end
 end
