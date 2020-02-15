@@ -1,0 +1,9 @@
+<%= form_with model: [:admin, product], local: true do |form| %>
+  <%= form.label :name, '商品名稱' %>
+  <%= form.text_field :name, placeholder: '請輸入商品名稱' %>
+  <%= form.label :desc, '商品描述' %>
+  <%= form.text_area :desc, placeholder: '請輸入商品描述' %>
+  <%= form.label :state, '商品狀態' %>
+  <%= form.text_field :state, placeholder: '請輸入商品狀態' %>
+  <%= form.submit '送出' %>
+<% end %>
