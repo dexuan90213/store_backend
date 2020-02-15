@@ -4,11 +4,13 @@
     <div class="control">
       <%= form.file_field :images, multiple: true %>
     </div>
-    <% if product.images.attached? %>
+
+    <div class="field">
       <% product.images.each do |image| %>
         <%= image_tag image %>
+        <%# <%= link_to 'Remove', image.purge %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 
   <div class="field">

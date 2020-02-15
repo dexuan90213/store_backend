@@ -45,7 +45,7 @@ class Admin::ProductsController < ApplicationController
   private
 
   def find_product
-    @product = current_manager.products.find(params[:id])
+    @product = current_manager.products.with_attached_images.find(params[:id])
   end
 
   def product_params
@@ -58,6 +58,9 @@ class Admin::ProductsController < ApplicationController
                                     images: [],
                                     skus_attributes: [
                                       :id, :spec, :quantity, :_destroy
+                                    ],
+                                    images_attributes: [
+                                      :id, :destroy
                                     ])
   end
 end

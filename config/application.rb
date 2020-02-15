@@ -18,5 +18,7 @@ module StoreBackend
 
     config.i18n.default_locale = 'zh-TW'
     config.time_zone = 'Taipei'
+
+    config.active_storage.replace_on_assign_to_many = false
   end
 end
