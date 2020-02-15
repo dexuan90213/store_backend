@@ -57,7 +57,7 @@ class Admin::ProductsController < ApplicationController
                                     :manager_id,
                                     images: [],
                                     skus_attributes: [
-                                      :spec, :quantity, :_destroy
+                                      :id, :spec, :quantity, :_destroy
                                     ])
   end
 end

@@ -49,9 +49,22 @@
   </div>
 
   <h3 class="title is-5">商品庫存</h3>
-  <%= form.fields_for :skus do |sku_form| %>
-    <%= render 'sku_fields', form: sku_form %>
-  <% end %>
+  <div data-controller="sku-form">
+
+    <template data-target="sku-form.template">
+      <%= form.fields_for :skus, Sku.new, child_index: 'NEW_RECORD' do |sku| %>
+        <%= render 'sku_fields', form: sku %>
+      <% end %>
+    </template>
+
+    <%= form.fields_for :skus do |sku_form| %>
+      <%= render 'sku_fields', form: sku_form %>
+    <% end %>
+
+    <div data-target="sku-form.add_item">
+      <%= link_to '新增項目', '#', class: 'button is-primary is-small', data: { action: 'sku-form#add_sku' } %>
+    </div>
+  </div>
 
   <%= form.hidden_field :manager_id, value: current_manager.id %>
 
