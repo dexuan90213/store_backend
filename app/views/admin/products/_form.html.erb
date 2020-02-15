@@ -1,9 +1,31 @@
 <%= form_with model: [:admin, product], local: true do |form| %>
-  <%= form.label :name, '商品名稱' %>
-  <%= form.text_field :name, placeholder: '請輸入商品名稱' %>
-  <%= form.label :desc, '商品描述' %>
-  <%= form.text_area :desc, placeholder: '請輸入商品描述' %>
-  <%= form.label :state, '商品狀態' %>
-  <%= form.text_field :state, placeholder: '請輸入商品狀態' %>
-  <%= form.submit '送出' %>
+  <div class="field">
+    <%= form.label :name, '商品名稱', class: 'lable'%>
+    <div class="control">
+      <%= form.text_field :name, placeholder: '請輸入商品名稱', class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :desc, '商品描述', class: 'lable' %>
+    <div class="control">
+      <%= form.text_area :desc, placeholder: '請輸入商品描述', class: 'textarea' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :state, '商品狀態', class: 'label' %>
+    <div class="control">
+      <%= form.text_field :state, placeholder: '請輸入商品狀態', class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <%= form.submit '送出', class: 'button is-link'%>
+    </div>
+    <div class="control">
+      <%= link_to '返回商品列表', admin_products_path, class: 'button is-link is-light' %>
+    </div>
+  </div>
 <% end %>

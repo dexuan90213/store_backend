@@ -10,9 +10,10 @@
   </head>
 
   <body>
+    <%= render 'shared/navbar' %>
     <section class="section">
       <div class="container">
-        <%= notice if notice %>
+        <%= render 'shared/flash' if notice %>
         <%= yield %>
       </div>
     </section>

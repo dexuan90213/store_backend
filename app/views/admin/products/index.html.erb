@@ -1,13 +1,25 @@
 <h1 class="title">商品列表</h1>
 
-<%= link_to '新增商品', new_admin_product_path %>
+<%= link_to '新增商品', new_admin_product_path, class: 'button is-primary' %>
 
-<ul>
-  <% @products.each do |product| %>
-    <li>
-      <%= link_to product.name, admin_product_path(product) %>
-      <%= link_to '編輯', edit_admin_product_path(product) %>
-      <%= link_to '刪除', admin_product_path(product), method: 'delete', data: { confirm: '確定要刪除嗎？' } %>
-    </li>
-  <% end %>
-</ul>
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>商品名稱</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each_with_index do |product, idx| %>
+      <tr>
+        <th><%= idx += 1 %></th>
+        <td><%= link_to product.name, admin_product_path(product) %></td>
+        <td><%= link_to '編輯', edit_admin_product_path(product), class: 'button is-info' %></td>
+        <td><%= link_to '刪除', admin_product_path(product), method: 'delete', data: { confirm: '確定要刪除嗎？' }, class: 'button is-danger' %></td>
+        </li>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
