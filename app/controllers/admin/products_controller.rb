@@ -52,6 +52,7 @@ class Admin::ProductsController < ApplicationController
                                     :desc,
                                     :state,
                                     :original_price,
-                                    :sell_price)
+                                    :sell_price,
+                                    images: [])
   end
 end

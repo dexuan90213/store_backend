@@ -1,20 +1,32 @@
 <%= form_with model: [:admin, product], local: true do |form| %>
   <div class="field">
-    <%= form.label :name, '商品名稱', class: 'lable'%>
+    <%= form.label :images, '商品圖片', class: 'lable' %>
+    <div class="control">
+      <%= form.file_field :images, multiple: true %>
+    </div>
+    <% if product.images.attached? %>
+      <% product.images.each do |image| %>
+        <%= image_tag image %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name, '商品名稱', class: 'lable' %>
     <div class="control">
       <%= form.text_field :name, placeholder: '請輸入商品名稱', class: 'input' %>
     </div>
   </div>
 
   <div class="field">
-    <%= form.label :original_price, '商品原價', class: 'lable'%>
+    <%= form.label :original_price, '商品原價', class: 'lable' %>
     <div class="control">
       <%= form.number_field :original_price, placeholder: '請輸入商品原價', class: 'input' %>
     </div>
   </div>
 
   <div class="field">
-    <%= form.label :sell_price, '商品售價', class: 'lable'%>
+    <%= form.label :sell_price, '商品售價', class: 'lable' %>
     <div class="control">
       <%= form.number_field :sell_price, placeholder: '請輸入商品售價', class: 'input' %>
     </div>
@@ -36,7 +48,7 @@
 
   <div class="field is-grouped">
     <div class="control">
-      <%= form.submit '送出', class: 'button is-link'%>
+      <%= form.submit '送出', class: 'button is-link' %>
     </div>
     <div class="control">
       <%= link_to '返回商品列表', admin_products_path, class: 'button is-link is-light' %>
