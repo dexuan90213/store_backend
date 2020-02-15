@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_15_123027) do
+ActiveRecord::Schema.define(version: 2020_02_15_133829) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -54,7 +54,9 @@ ActiveRecord::Schema.define(version: 2020_02_15_123027) do
     t.decimal "original_price"
     t.decimal "sell_price"
     t.datetime "deleted_at"
+    t.integer "manager_id"
     t.index ["deleted_at"], name: "index_products_on_deleted_at"
+    t.index ["manager_id"], name: "index_products_on_manager_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

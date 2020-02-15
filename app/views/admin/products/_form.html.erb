@@ -46,6 +46,8 @@
     </div>
   </div>
 
+  <%= form.hidden_field :manager_id, value: current_manager.id %>
+
   <div class="field is-grouped">
     <div class="control">
       <%= form.submit '送出', class: 'button is-link' %>

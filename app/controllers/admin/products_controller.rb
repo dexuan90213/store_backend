@@ -5,7 +5,7 @@ class Admin::ProductsController < ApplicationController
   layout 'backend'
 
   def index
-    @products = Product.all
+    @products = current_manager.products
   end
 
   def show
@@ -44,7 +44,7 @@ class Admin::ProductsController < ApplicationController
   private
 
   def find_product
-    @product = Product.find(params[:id])
+    @product = current_manager.products.find(params[:id])
   end
 
   def product_params
@@ -53,6 +53,7 @@ class Admin::ProductsController < ApplicationController
                                     :state,
                                     :original_price,
                                     :sell_price,
+                                    :manager_id,
                                     images: [])
   end
 end
