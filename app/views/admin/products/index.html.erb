@@ -21,7 +21,16 @@
         <td><%= link_to product.name, admin_product_path(product) %></td>
         <td><%= product.original_price %></td>
         <td><%= product.sell_price %></td>
-        <td><%= product.state %></td>
+        <td>
+          <% case product.state %>
+          <% when 'on_sale' %>
+            上架
+          <% when 'discontinued' %>
+            下架
+          <% when 'restock' %>
+            進貨中
+          <% end %>
+        </td>
         <td><%= link_to '編輯', edit_admin_product_path(product), class: 'button is-info' %></td>
         <td><%= link_to '刪除', admin_product_path(product), method: 'delete', data: { confirm: '確定要刪除嗎？' }, class: 'button is-danger' %></td>
         </li>

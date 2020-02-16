@@ -1,3 +1,13 @@
+<% if product.errors.any? %>
+  <ul>
+    <div class="content">
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </div>
+  </ul>
+<% end %>
+
 <%= form_with model: [:admin, product], local: true do |form| %>
   <div class="field">
     <%= form.label :images, '商品圖片', class: 'lable' %>
