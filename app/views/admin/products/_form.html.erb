@@ -12,13 +12,13 @@
   <div class="field">
     <%= form.label :images, '商品圖片', class: 'lable' %>
     <div class="control">
-      <%= form.file_field :images, multiple: true, class: 'input' %>
+      <%= form.file_field :images, multiple: true, accept: "image/png,image/gif,image/jpeg", class: 'input' %>
     </div>
   </div>
 
   <div class="field">
     <div class="columns">
-      <% if product.images.attached? %>
+      <% if product.images.attached? && !product.new_record? %>
         <% product.images.each do |image| %>
           <div class="card">
             <div class="card-image">

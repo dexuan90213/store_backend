@@ -3,7 +3,7 @@ class Product < ApplicationRecord
 
   validates :name, :desc, presence: true
   validates :original_price, :sell_price, numericality: { greater_than: 0 }
-  validates :sell_price, numericality: { less_than: :original_price }
+  validates :sell_price, numericality: { less_than_or_equal_to: :original_price }
 
   has_many_attached :images
   has_many :skus
