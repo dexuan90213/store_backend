@@ -42,6 +42,12 @@ class Admin::ProductsController < ApplicationController
     redirect_to admin_products_path, notice: '商品已刪除'
   end
 
+  def delete_image
+    attachment = ActiveStorage::Attachment.find(params[:image_id])
+    attachment.purge
+    redirect_to edit_admin_product_path(params[:id])
+  end
+
   private
 
   def find_product
@@ -58,9 +64,6 @@ class Admin::ProductsController < ApplicationController
                                     images: [],
                                     skus_attributes: [
                                       :id, :spec, :quantity, :_destroy
-                                    ],
-                                    images_attributes: [
-                                      :id, :destroy
                                     ])
   end
 end

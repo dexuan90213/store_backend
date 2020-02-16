@@ -2,12 +2,25 @@
   <div class="field">
     <%= form.label :images, '商品圖片', class: 'lable' %>
     <div class="control">
-      <%= form.file_field :images, multiple: true %>
+      <%= form.file_field :images, multiple: true, class: 'input' %>
     </div>
+  </div>
 
-    <div class="field">
+  <div class="field">
+    <div class="columns">
       <% product.images.each do |image| %>
-        <%= image_tag image.variant(resize_to_limit: [300, 300]) %>
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4b">
+              <%= image_tag image.variant(resize_to_limit: [300, 300]) %>
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="content">
+              <%= link_to '刪除', url_for(controller: "admin/products",action: 'delete_image', id: product.id, image_id: image.id), class: 'button is-danger is-small is-light', method: 'delete' %>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
