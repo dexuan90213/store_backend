@@ -1,0 +1,30 @@
+<h1 class="title">商品列表</h1>
+
+<div class="columns">
+  <% @products.each do |product| %>
+    <div class="column is-3">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <% if product.images.attached? %>
+              <%= image_tag product.images.first.variant(resize_to_limit: [300, 300]) %>
+            <% else %>
+              <img src="https://fakeimg.pl/300x300/">
+            <% end %>
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4">商品名稱：<%= product.name %></p>
+            </div>
+          </div>
+
+          <div class="content">
+            <%= link_to '詳細', product_path(product), class: 'button' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

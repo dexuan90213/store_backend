@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   devise_for :managers
+
+  root 'products#index'
+  resources :products, only: [:index, :show]
+
   namespace :admin do
     resources :products do
       member do
@@ -8,6 +12,4 @@ Rails.application.routes.draw do
     end
     root 'products#index'
   end
-
-  root 'admin/products#index'
 end
