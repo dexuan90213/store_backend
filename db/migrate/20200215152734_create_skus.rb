@@ -3,7 +3,7 @@ class CreateSkus < ActiveRecord::Migration[6.0]
     create_table :skus do |t|
       t.belongs_to :product, null: false, foreign_key: true
       t.string :spec
-      t.integer :quantity, default: 0
+      t.integer :quantity
       t.datetime :deleted_at
 
       t.timestamps
